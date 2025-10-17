@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSV Test</title>
+    <style>
+        /* CSS for the page */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .csv-output {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 800px;
+        }
+    </style>
+</head>
+<body>
+    <div class="csv-output">
+        <!-- CSV content will be appended here -->
+    </div>
+
+    <script>
+        // JavaScript for reading the CSV file
+        fetch('products.csv')
+        .then(response => response.text())
+        .then(data => {
+            const csvOutput = document.querySelector('.csv-output');
+            csvOutput.textContent = data;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while fetching the CSV file.');
+        });
+    </script>
+</body>
+</html>
